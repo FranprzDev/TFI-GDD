@@ -1,4 +1,4 @@
-/* CREATE TABLE Sector ( 
+CREATE TABLE Sector ( 
     codSector INT PRIMARY KEY NOT NULL,
     nombre VARCHAR(50)
 ); 
@@ -56,7 +56,7 @@ CREATE TABLE FichaMedica (
     factorSangre VARCHAR(10),
     codRevMedica INT,
     FOREIGN KEY (codRevMedica) REFERENCES RevMedica(codRevMedica)
-); */
+);
 
 CREATE TABLE Empleado (
     codEmp INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -131,3 +131,4 @@ CREATE TABLE Idioma (
     codEmp INT, 
     FOREIGN KEY (codEmp) REFERENCES Empleado(codEmp)
 );
+

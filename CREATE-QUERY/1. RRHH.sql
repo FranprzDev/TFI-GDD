@@ -132,3 +132,27 @@ CREATE TABLE Idioma (
     FOREIGN KEY (codEmp) REFERENCES Empleado(codEmp)
 );
 
+/* REVISAR ESTAS TABLAS, SE HICIEON AL FINAL */
+CREATE TABLE Categoria (
+    codigo INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    sueldoBasico DECIMAL(20, 2)
+);
+
+CREATE TABLE Concepto (
+    codigo INT PRIMARY KEY,
+    conceptoNombre VARCHAR(100),
+    cantidad DECIMAL(20, 2),
+    unidad VARCHAR(50),
+    aportes DECIMAL(20, 2),
+    debeHaber ENUM('Debe', 'Haber')
+);
+CREATE TABLE Liquidacion (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fechaDeposito DATE,
+    idConcepto INT,
+    codigoCategoria INT,
+    sueldoNeto DECIMAL(20, 2),
+    FOREIGN KEY (idConcepto) REFERENCES Concepto(codigo),
+    FOREIGN KEY (codigoCategoria) REFERENCES Categoria(codigo)
+);

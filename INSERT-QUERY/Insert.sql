@@ -142,13 +142,13 @@ INSERT INTO fichamedica (tipoSangre, factorSangre, codRevMedica) VALUES
 ('A', '+', 1244),
 ('B', '-', 1245);
 
-INSERT INTO salario (fecha, categoria, salarioNeto) values (CURDATE(), 'Operario', 300000),
-(CURDATE(), 'Operario', 350000),
-(CURDATE(), 'Operario', 370000),
-(CURDATE(), 'Administrativo', 500000),
-(CURDATE(), 'Gerente', 800000);
+-- INSERT INTO salario (fecha, categoria, salarioNeto) values (CURDATE(), 'Operario', 300000),
+-- (CURDATE(), 'Operario', 350000),
+-- (CURDATE(), 'Operario', 370000),
+-- (CURDATE(), 'Administrativo', 500000),
+-- (CURDATE(), 'Gerente', 800000);
 
-
+-- Aquí se modifico la tabla empleados para hacer que 
 INSERT INTO empleado
 (`nombre`, `apellido`, `fechaIngreso`, `fechaNac`, `lugarNac`, `sexo`, `estadoCivil`, 
 `direccion`, `telefono`, `codLoc`, `codDep`, `codSalario`, `codFichaMedica`)
@@ -278,3 +278,26 @@ INSERT INTO Cliente (nombre, apellido, tipoCliente, dni, codLoc) VALUES
 ('Roberto', 'Pérez', 'Responsable Inscripto', '30011223', (SELECT codLoc FROM localidad WHERE nombre = 'Yerba Buena')),
 ('Carmen', 'Sanchez', 'Consumidor Final', '31122334', (SELECT codLoc FROM localidad WHERE nombre = 'Concepción'));
 
+
+Categoría(código, nombre, sueldoBasico)
+
+INSERT INTO Categoria (nombre, sueldoBasico) VALUES
+(1,'Operario', 400000),
+(2,'Administrativo', 700000),
+(3,'Gerente', 1000000);
+
+
+INSERT INTO Liquidacion (fechaDeposito, idConcepto, codigoCategoria, sueldoNeto)
+VALUES ('2024-06-01', 1, 1, 2500.00),
+       ('2024-06-02', 2, 2, 3500.00),
+       ('2024-06-03', 3, 1, 2800.00),
+       ('2024-06-04', 4, 3, 4000.00),
+       ('2024-06-05', 5, 2, 3200.00);
+
+INSERT INTO Concepto (codigo, conceptoNombre, cantidad, unidad, aportes, debeHaber, idLiquidacion) 
+VALUES 
+    (1, 'Hora trabajada', 1, 'Hora', 0, 'Debe', 1),
+    (2, 'Presentismo', 1, 'Día', 500, 'Haber', 1),
+    (3, 'Fachero', 1, 'Mes', 200, 'Haber', 1),
+    (4, 'Horas extra', 1, 'Hora', 150, 'Debe', 1),
+    (5, 'Descuento por mala conducta', 1, 'Evento', -100, 'Debe', 1);
